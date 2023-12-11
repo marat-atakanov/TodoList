@@ -9,7 +9,7 @@ const signInUsername = document.querySelector(".signInUsername")
 const signInPassword = document.querySelector(".signInPassword")
 const signInInvalidMessage = document.querySelector(".signInInvalidMessage")
 
-// Signing in
+// Sign in
 const getUsersForSignIn = async () => {
     try {
         const response = await fetch(`${api}/users`)
@@ -20,7 +20,7 @@ const getUsersForSignIn = async () => {
     }
 }
 
-// Submit the login form
+// Submit the signIn form
 
 signInForm.onsubmit = async (e) => {
     e.preventDefault()

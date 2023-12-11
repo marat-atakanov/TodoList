@@ -10,17 +10,8 @@ const signUpPassword = document.querySelector(".signUpPassword")
 const signUpConfirmPassword = document.querySelector(".signUpConfirmPassword")
 const signUpUserExistsMessage = document.querySelector(".signUpUserExistsMessage")
 
-// const getUsersForSignUp = async () => {
-//     try {
-//         const response = await fetch(`${api}/users`)
-//         const usersList = await response.json()
-//         return usersList.has(user => user.username === signInUsername.value && user.password === signInPassword.value)
-//     } catch (e) {
-//         console.log(e)
-//     }
-// }
 
-// Register
+// SignUp
 const signUp = async (username, password) => {
     try {
         const response = await fetch(`${api}/users`, {
@@ -40,12 +31,11 @@ const signUp = async (username, password) => {
     }
 }
 
-// Submit the register form if every field is filled correctly
+// Submit the signup form
 signUpForm.onsubmit = async (e) => {
     e.preventDefault()
     if (signUpPassword.value === signUpConfirmPassword.value) {
         await signUp(signUpUsername.value, signUpPassword.value)
-
     } else {
         signUpUserExistsMessage.innerHTML = "Passwords do not match!"
     }

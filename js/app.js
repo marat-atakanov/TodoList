@@ -12,6 +12,7 @@ const signOutBtn = document.querySelector(".signOutBtn")
 
 const userId = localStorage.getItem("id")
 
+// Get the tasks from a server
 const getTasks = async () => {
     try {
         const response = await fetch(`${api}/users/${userId}/tasks-list`)
@@ -61,6 +62,7 @@ const elementsCreate = (task) => {
         await taskBlock.remove()
     }
 
+    // Delete btn icon
     const trashCan = document.createElement("img")
     trashCan.setAttribute("src", "images/icons/trashCan.svg")
     deleteBtn.append(trashCan)
@@ -87,6 +89,7 @@ const elementsCreate = (task) => {
     list.insertBefore(taskBlock, list.firstChild)
 }
 
+// Show the tasks
 const tasksListShow = async () => {
     const tasksList = await getTasks()
     if (tasksList) {
@@ -140,7 +143,7 @@ const taskEdit = async (taskId, text) => {
     }
 }
 
-// Post a new task
+// New task function
 const newTaskSubmit = async (text) => {
     try {
         const response = await fetch(`${api}/users/${userId}/tasks-list/`, {
@@ -156,17 +159,20 @@ const newTaskSubmit = async (text) => {
     }
 }
 
+// Post a new task
 postNewTaskBlock.onsubmit = async (e) => {
     e.preventDefault()
     await newTaskSubmit(newTaskText.value)
     newTaskText.value = ""
 }
-
+// Sign out
 signOutBtn.onclick = () => {
     localStorage.removeItem("id");
     window.location.replace("index.html")
 }
 
+
+// Hide modal window
 modalBg.onclick = () => {
     editText.value = ""
     editTextModalWindow.classList.add("hideModal")
@@ -177,7 +183,7 @@ const allBtn = document.querySelector(".allBtn")
 const checkedBtn = document.querySelector(".checkedBtn")
 const uncheckedBtn = document.querySelector(".uncheckedBtn")
 
-// Filter tasks function
+// Checked filter
 const tasksFilter = async (checked) => {
     try {
         const response = await fetch(`${api}/users/${userId}/tasks-list?checked=${checked}`)
@@ -194,14 +200,14 @@ allBtn.onclick = async () => {
     await filteredTasks.forEach(task => elementsCreate(task))
 }
 
-// Show completed tasks
+// Show checked tasks
 checkedBtn.onclick = async () => {
     const filteredTasks = await tasksFilter("true")
     list.innerHTML = await null
     await filteredTasks.forEach(task => elementsCreate(task))
 }
 
-// Show uncompleted tasks
+// Show unchecked tasks
 uncheckedBtn.onclick = async () => {
     const filteredTasks = await tasksFilter("false")
     list.innerHTML = await null
