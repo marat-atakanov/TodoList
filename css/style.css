@@ -480,11 +480,12 @@ header {
 
 footer {
     background-color: rgba(0, 0, 0, 0.91);
-    height: 250px;
 }
 
 .footer_inner {
     padding: 60px 0;
+    display: flex;
+    justify-content: center;
 
 }
 
@@ -492,12 +493,21 @@ footer {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 .footer_inner ul li a {
     text-decoration: none;
-    color: white;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.footer_inner ul li span {
+    font-weight: 700;
+    display: block;
+    width: 40px;
+    color: #8c8c8c;
+    font-size: 14px;
 }
 
 .footer_inner ul li a:hover {
