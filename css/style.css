@@ -349,11 +349,23 @@ body {
 }
 
 .signInForm {
+    position: relative;
     padding-bottom: 20px;
     width: 600px;
     background-color: rgba(255, 255, 255, 0.24);
     border-radius: 0 15px 0 15px;
     text-align: center;
+    animation: popUp 500ms;
+}
+@keyframes popUp {
+    from {
+        opacity: 0;
+        top: 100px;
+    }
+    to {
+        opacity: 1;
+        top: 0;
+    }
 }
 
 .signInForm div {
@@ -414,11 +426,13 @@ body {
 }
 
 .signUpForm {
+    position: relative;
     padding-bottom: 20px;
     width: 600px;
     background-color: rgba(255, 255, 255, 0.24);
     border-radius: 0 15px 0 15px;
     text-align: center;
+    animation: popUp 500ms;
 }
 
 .signUpForm div {
