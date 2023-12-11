@@ -160,7 +160,7 @@ body {
 .task {
     position: relative;
     padding: 20px;
-    animation: popUpTask 150ms;
+    animation: popUpTask 200ms;
 }
 
 
