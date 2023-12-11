@@ -158,7 +158,21 @@ body {
     }
 }
 .task {
+    position: relative;
     padding: 20px;
+    animation: popUpTask 150ms;
+}
+
+
+@keyframes popUpTask {
+    from {
+        opacity: 0;
+        top: -100px;
+    }
+    to {
+        opacity: 1;
+        top: 0;
+    }
 }
 
 .task:nth-of-type(odd) {
